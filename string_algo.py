@@ -40,18 +40,19 @@ def kmp_search_positions(text, pattern):
     return positions
 
 def jump_search_in_text(text, key):
-    """Search for key in sorted tokens using Jump Search. Returns index or -1 if not found."""
-    tokens = tokenize(text)
-    tokens = sorted(tokens)
+    """Search for key in sorted tokens using Jump Search. Returns index in sorted list or -1 if not found."""
+    tokens = sorted(tokenize(text))
     n = len(tokens)
     if n == 0:
         return -1
-    step = int(n ** 0.5)
+    step = int(n ** 0.5) or 1
+    # Find the block where key may be
     prev = 0
-    while prev < n and tokens[min(n-1, prev+step)] < key:
+    while prev < n and tokens[min(n - 1, prev + step)] < key:
         prev += step
-    start = max(0, prev - step)
-    for idx in range(start, min(prev+1, n)):
+    # Linear search within the block starting at prev
+    end = min(prev + step + 1, n)
+    for idx in range(prev, end):
         if tokens[idx] == key:
             return idx
     return -1

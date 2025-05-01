@@ -2,13 +2,15 @@ from brute_force import count_occurrences
 from compare_dc import common_words_dc
 from lcs_dp import lcs_from_texts
 from string_algo import kmp_search_positions, jump_search_in_text
+from utils import tokenize
 import pyfiglet
 
 def main():
-    # ASCII art banner using pyfiglet
-    banner = pyfiglet.figlet_format("Text Analyzer", font="slant")
-    print(banner)
     while True:
+        # ASCII art banner using pyfiglet
+        banner = pyfiglet.figlet_format("Text Analyzer", font="slant")
+        print(banner)
+        
         print("Select operation:")
         print("1) Count word occurrences (Brute Force)")
         print("2) Common words (Divide and Conquer)")
@@ -42,9 +44,15 @@ def main():
                 print(f"Pattern '{pattern}' not found.")
         elif choice == '5':
             text = input("Paste your text:\n")
+            # Show sorted tokens for jump search
+            tokens = sorted(tokenize(text))
+            print("Sorted tokens:", tokens)
             key = input("Enter word to find index (Jump Search):\n")
             idx = jump_search_in_text(text, key)
-            print(f"Index of '{key}': {idx}" if idx != -1 else f"'{key}' not found.")
+            if idx != -1:
+                print(f"Index of '{key}': {idx}")
+            else:
+                print(f"'{key}' not found.")
         elif choice == '6':
             print("Exiting.")
             break
