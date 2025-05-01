@@ -1,6 +1,7 @@
 from brute_force import count_occurrences
 from compare_dc import common_words_dc
 from lcs_dp import lcs_from_texts
+from string_algo import kmp_search_positions, jump_search_in_text
 import pyfiglet
 
 def main():
@@ -12,7 +13,9 @@ def main():
         print("1) Count word occurrences (Brute Force)")
         print("2) Common words (Divide and Conquer)")
         print("3) Longest common subsequence (Dynamic Programming)")
-        print("4) Exit")
+        print("4) Locate pattern positions (String Algorithm - Knuth-Morris-Pratt)")
+        print("5) Find token index (Jump Search)")
+        print("6) Exit")
         choice = input("Choice: ").strip()
         if choice == '1':
             text = input("Paste your text:\n")
@@ -30,6 +33,19 @@ def main():
             lcs = lcs_from_texts(text1, text2)
             print("Longest Common Subsequence of words:", " ".join(lcs))
         elif choice == '4':
+            text = input("Paste your text:\n")
+            pattern = input("Enter pattern to locate (KMP):\n")
+            positions = kmp_search_positions(text, pattern)
+            if positions:
+                print(f"Pattern '{pattern}' found at positions: {positions}")
+            else:
+                print(f"Pattern '{pattern}' not found.")
+        elif choice == '5':
+            text = input("Paste your text:\n")
+            key = input("Enter word to find index (Jump Search):\n")
+            idx = jump_search_in_text(text, key)
+            print(f"Index of '{key}': {idx}" if idx != -1 else f"'{key}' not found.")
+        elif choice == '6':
             print("Exiting.")
             break
         else:
