@@ -6,11 +6,10 @@ from utils import tokenize
 import pyfiglet
 
 def main():
+    # ASCII art banner using pyfiglet
+    banner = pyfiglet.figlet_format("Text Analyzer", font="slant")
+    print(banner)
     while True:
-        # ASCII art banner using pyfiglet
-        banner = pyfiglet.figlet_format("Text Analyzer", font="slant")
-        print(banner)
-        
         print("Select operation:")
         print("1) Count word occurrences (Brute Force)")
         print("2) Common words (Divide and Conquer)")
