@@ -2,7 +2,7 @@
 
 ## Overview
 
-Text Analyzer is a Python application developed for the CS 006: Algorithms and Complexity course. It demonstrates practical use of different algorithmic paradigms to perform text analysis tasks.
+LexiCLI is a Python application developed for the CS 006: Algorithms and Complexity course. It demonstrates practical use of different algorithmic paradigms to perform text analysis tasks.
 
 ### Student Outcomes
 
