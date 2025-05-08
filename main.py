@@ -7,7 +7,7 @@ import pyfiglet
 
 def main():
     # ASCII art banner using pyfiglet
-    banner = pyfiglet.figlet_format("Text Analyzer", font="slant")
+    banner = pyfiglet.figlet_format("LexiCLI", font="slant")
     print(banner)
     while True:
         print("Select operation:")
